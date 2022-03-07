@@ -1,0 +1,5 @@
+{
+    "board": "arduino:avr:ethernet",
+    "port": "COM5",
+    "sketch": "arduino.ino"
+}
