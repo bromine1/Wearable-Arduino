@@ -20,14 +20,20 @@ void setup()
     //Initialize pins as output
     pulseSensor.analogInput(PulseWire);
     pinMode(buzzer, OUTPUT); //initialize the buzzer pin as an output
+    Serial.print("Time , Temperature, BPM");
 }
 
 void loop()
 //think of this as the main function, continues to execute
 {
-    temp.read11(dhtTemp);
-    Serial.println()
-    if (temp.temperature > 100 ) 
+    temp.read11(dhtTemp); // Initialize reading of temperature
+    // Print data in CSV format
+    Serial.print(millis());
+    Serial.print(",\t");
+    Serial.print(temp.temperature); //prints temperature
+    Serial.print(",\t");
+    Serial.println(pulseSensor.getBeatsPerMinute());
+    if (temp.temperature > 100 )
     {
         tone(buzzer, 100, 500);
     }
