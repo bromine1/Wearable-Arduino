@@ -4,7 +4,7 @@
 PulseSensorPlayground pulseSensor; //Give the module a bertter name
 dht temp; //Defines dht as DHT. Think import dht as DHT
 
-int buzzer = 12;//the pin of the active buzzer
+int buzzer = 11;//the pin of the active buzzer
 const int PulseWire = 0;
 int Threashold = 550;
 
@@ -26,12 +26,10 @@ void loop()
 //think of this as the main function, continues to execute
 {
     temp.read11(dhtTemp);
-    
+    Serial.println()
     if (temp.temperature > 100 ) 
     {
-        digitalWrite(buzzer, LOW);
-        delay(500);
-        noTone(buzzer);
+        tone(buzzer, 100, 500);
     }
 
 }
