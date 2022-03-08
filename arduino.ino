@@ -20,7 +20,7 @@ void setup()
     //Initialize pins as output
     pulseSensor.analogInput(PulseWire);
     pinMode(buzzer, OUTPUT); //initialize the buzzer pin as an output
-    Serial.print("Time , Temperature, BPM");
+    Serial.println("Time , Temperature, BPM");
 }
 
 void loop()
