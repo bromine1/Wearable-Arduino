@@ -5,7 +5,7 @@ PulseSensorPlayground pulseSensor; //Give the module a bertter name
 dht temp; //Defines dht as DHT. Think import dht as DHT
 
 int buzzer = 11;//the pin of the active buzzer
-const int PulseWire = 0;
+const int PulseWire = 5;
 int Threashold = 550;
 
 
@@ -37,5 +37,6 @@ void loop()
     {
         tone(buzzer, 100, 500);
     }
+    delay(500);
 
 }
