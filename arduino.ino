@@ -1,5 +1,3 @@
-
-
 #define USE_ARDUINO_INTERRUPTS true
 #define DHTTYPE DHT11
 #define dht_apin A0 // Analog Pin sensor is connected to
