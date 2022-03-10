@@ -50,8 +50,6 @@ void loop()
         tone(buzzer, 100, 500);
     }
     // DHT 11 tutorials say to give it at least 2 seconds of delay before reading again.
-    //Giving time would also allow the heartbeat sensor to gather data if pausing works as a fix
+    //Giving time also allows the heartbeat sensor to gather data.
     delay(3000);
     }
-
-// Issue in Issue log, Thanks Mr. Baldwin!
