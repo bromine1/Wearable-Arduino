@@ -52,4 +52,4 @@ void loop()
     // DHT 11 tutorials say to give it at least 2 seconds of delay before reading again.
     //Giving time also allows the heartbeat sensor to gather data.
     delay(3000);
-    }
+}
