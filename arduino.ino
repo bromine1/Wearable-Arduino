@@ -1,15 +1,16 @@
-#define USE_ARDUINO_INTERRUPTS true
-#define DHTTYPE DHT11
-#define dht_apin A0 // Analog Pin sensor is connected to
-#include <dht.h>
+#include "dht.h"
 #include <PulseSensorPlayground.h>
+#define dht_apin A0 // Analog Pin sensor is connected to
+#define USE_ARDUINO_INTERRUPTS true
 
+float MyTemp = 0;
+int MyBPM = 0;
 int buzzer = 11;//the pin of the active buzzer
 const int PulseWire = 5;
 int Threashold = 550;
 
 PulseSensorPlayground heartbeat; //Give the module a bertter name
-dht temp; //Defines dht as DHT. Think import dht as DHT
+dht DHT; //Defines dht as DHT. Think import dht as DHT
 
 void setup()
 // init function, all the things that happen once
@@ -17,21 +18,18 @@ void setup()
     //Initialize Serial for diagnostics
     Serial.begin(9600);
     delay(500);//Delay to let system boot
-    heartbeat.analogInput(PulseWire);
-    //Initialize pins as output
+    heartbeat.analogInput(PulseWire);//Initialize pins as output
     heartbeat.setThreshold(Threashold); // Define heartbeat threashold
     pinMode(buzzer, OUTPUT); //initialize the buzzer pin as an output
-    if (heartbeat.begin()) {
-        Serial.println("Time , Temperature, BPM");
+    Serial.println("Time , Temperature, BPM");
+    delay(1000);
     }
-}
-
 void loop()
 //think of this as the main function, continues to execute
 {
+    DHT.read11(dht_apin); // Initialize reading of temperature
+    float MyTemp = DHT.temperature;
     int MyBPM = heartbeat.getBeatsPerMinute();
-    temp.read11(dht_apin); // Initialize reading of temperature
-    int MyTemp = temp.temperature;
     // Print data in CSV format
     Serial.print(millis());
     Serial.print(",\t");
@@ -42,5 +40,5 @@ void loop()
     {
         tone(buzzer, 100, 500);
     }
-    delay(2000);
+    delay(3000);
     }
