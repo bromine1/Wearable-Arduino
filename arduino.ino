@@ -21,9 +21,11 @@ void setup()
     heartbeat.analogInput(PulseWire);//Initialize pins as output
     heartbeat.setThreshold(Threashold); // Define heartbeat threashold
     pinMode(buzzer, OUTPUT); //initialize the buzzer pin as an output
-    Serial.println("Time , Temperature, BPM");
-    delay(1000);
+    Serial.print(heartbeat.begin());
+if (1 == 1) {
+        Serial.println("Time , Temperature, BPM");
     }
+}
 void loop()
 //think of this as the main function, continues to execute
 {
