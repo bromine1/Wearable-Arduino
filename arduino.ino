@@ -32,12 +32,12 @@ void setup()
 void loop()
 //think of this as the main function, continues to execute
 {
+    int MyBPM = heartbeat.getBeatsPerMinute(); // get the BPM
     heartbeat.pause();
     delay(100);
     DHT.read11(dht_apin); // Initialize reading of temperature
     float MyTemp = DHT.temperature; // Set temperature value. This is where I would pause the heartbeat sensor
     heartbeat.resume();
-    int MyBPM = heartbeat.getBeatsPerMinute(); // get the BPM
     // Print data in CSV format
     Serial.print(millis()); //time
     Serial.print(",\t");
