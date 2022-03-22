@@ -7,6 +7,7 @@
 
 // Define Variables
 int time_in_millis = 0;
+float time_in_seconds = 0;
 float MyTemp = 0;
 int MyBPM = 0;
 int buzzer = 11;//the pin of the active buzzer
@@ -40,8 +41,9 @@ void loop()
     float MyTemp = DHT.temperature; // Set temperature value. This is where I would pause the heartbeat sensor
     heartbeat.resume();
     time_in_millis = millis();
+    time_in_seconds = millis() / 1000;
     // Print data in CSV format
-    Serial.print(time_in_millis); //time
+    Serial.print(time_in_seconds); //time
     Serial.print(",\t");
     Serial.print(MyTemp); //prints temperature
     Serial.print(",\t");
