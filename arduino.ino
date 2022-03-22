@@ -1,5 +1,4 @@
 //Define and include Libraries
-//I believe interrupts to be necessary,as pule sensor's begin method returns an error if it is not enabled
 #define USE_ARDUINO_INTERRUPTS true    
 #define dht_apin A0 // Analog Pin Temperature sensor is connected to
 #include "dht.h" // Temperature sensor library, this needs to be downloaded
@@ -15,8 +14,8 @@ int buzzer = 11;//the pin of the active buzzer
 const int PulseWire = 5; // Analog Pin
 int Threashold = 550; // analog threshhold for a beat
 
-PulseSensorPlayground heartbeat; //Give the module a bertter name
-dht DHT; //Defines dht as DHT. Think import dht as DHT
+PulseSensorPlayground heartbeat; //Create heartbeat object
+dht DHT; //Create temperature object
 
 void setup()
 // init function, all the things that happen once
@@ -28,7 +27,7 @@ void setup()
     heartbeat.setThreshold(Threashold); // Define heartbeat threashold
     pinMode(buzzer, OUTPUT); //initialize the buzzer pin as an output
     heartbeat.begin(); // function to begin heart monitor, im wondering if I need to pause it, wait a second, and get temperature
-    Serial.println("Time , Temperature, BPM"); // print to serial in csv format. IDK how to handle files in C++, but I can copy/paste
+    Serial.println("Time , Temperature, BPM"); // print to serial in csv format.
     }
 
 void loop()
@@ -38,7 +37,7 @@ void loop()
     heartbeat.pause();
     delay(100);
     DHT.read11(dht_apin); // Initialize reading of temperature
-    float MyTemp = DHT.temperature; // Set temperature value. This is where I would pause the heartbeat sensor
+    float MyTemp = DHT.temperature; // Set temperature value.
     heartbeat.resume();
     time_in_millis = millis();
     time_in_seconds = millis() / 1000;
