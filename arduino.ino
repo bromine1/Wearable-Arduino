@@ -6,6 +6,7 @@
 #include <PulseSensorPlayground.h> // heartbeat sensor library, in the official repos
 
 // Define Variables
+int time_in_millis = 0;
 float MyTemp = 0;
 int MyBPM = 0;
 int buzzer = 11;//the pin of the active buzzer
@@ -38,14 +39,15 @@ void loop()
     DHT.read11(dht_apin); // Initialize reading of temperature
     float MyTemp = DHT.temperature; // Set temperature value. This is where I would pause the heartbeat sensor
     heartbeat.resume();
+    time_in_millis = millis();
     // Print data in CSV format
-    Serial.print(millis()); //time
+    Serial.print(time_in_millis); //time
     Serial.print(",\t");
     Serial.print(MyTemp); //prints temperature
     Serial.print(",\t");
     Serial.println(MyBPM); // prints BPM
     //conditional to check if it meets requirements for stress. If so, output buzzer tone
-    if (MyTemp > 100 and MyBPM > 100)
+    if (MyTemp >= 38 and MyBPM >= 100)
     {
         tone(buzzer, 100, 500);
     }
