@@ -1,6 +1,6 @@
 //Define and include Libraries
 #define USE_ARDUINO_INTERRUPTS true    
-#define dht_apin A0 // Analog Pin Temperature sensor is connected to
+#define dht_analog_pin A0 // Analog Pin Temperature sensor is connected to
 #include "dht.h" // Temperature sensor library, this needs to be downloaded
 #include <PulseSensorPlayground.h> // heartbeat sensor library, in the official repos
 
@@ -36,7 +36,7 @@ void loop()
     int MyBPM = heartbeat.getBeatsPerMinute(); // get the BPM
     heartbeat.pause();
     delay(100);
-    DHT.read11(dht_apin); // Initialize reading of temperature
+    DHT.read11(dht_analog_pin); // Initialize reading of temperature
     float MyTemp = DHT.temperature; // Set temperature value.
     heartbeat.resume();
     time_in_millis = millis();
